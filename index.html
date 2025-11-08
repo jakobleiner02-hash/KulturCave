@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lowkey Kultur – Culture Cave</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif}
+body{
+  background:url("hintergrund.jpg") no-repeat center center/cover;
+  color:#3c2e1e;
+  overflow-x:hidden;
+}
+
+/* INTRO */
+#intro{
+  position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:rgba(255,248,236,.95);z-index:20;text-align:center;transition:opacity 1s ease;
+}
+#intro h1{font-size:3em;animation:fadeIn 2s ease-in-out forwards}
+#intro p{font-size:1.2em;margin-top:10px;color:#6b4e1e;opacity:0;animation:fadeIn 3s ease-in-out 1s forwards}
+#start-btn{margin-top:40px;padding:15px 40px;border:none;border-radius:25px;background:#c69b4e;color:white;font-size:1.2em;cursor:pointer;transition:.3s}
+#start-btn:hover{background:#b6853b}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* MAIN */
+#main{opacity:0;transition:opacity 1s ease;padding:50px 20px;text-align:center}
+button.info-btn,button.join-btn{
+  margin-top:20px;padding:12px 30px;border:none;background:#c69b4e;color:white;
+  border-radius:25px;font-size:1em;cursor:pointer;transition:.3s
+}
+button.info-btn:hover,button.join-btn:hover{background:#b6853b}
+
+/* SLIDES */
+.slide{
+  position:fixed;inset:0;background:rgba(255,244,221,.97);
+  transform:translateX(100%);transition:transform 1s ease;z-index:15;
+  padding:80px 10%;overflow-y:auto;text-align:center;
+}
+.slide.active{transform:translateX(0)}
+.slide h2{font-size:2.2em;color:#3c2e1e}
+.slide p{margin-top:20px;line-height:1.7;color:#5c4a2f}
+.slide button{margin-top:30px;padding:10px 25px;background:#c69b4e;border:none;
+  border-radius:20px;color:white;font-weight:bold;cursor:pointer}
+
+/* VIDEO */
+.video-section{margin-top:60px}
+.video-frame{max-width:700px;margin:0 auto;border-radius:20px;overflow:hidden;
+  box-shadow:0 4px 15px rgba(0,0,0,.2)}
+video{width:100%;border-radius:20px}
+
+/* VOTES */
+.votes{max-width:700px;margin:50px auto;text-align:left}
+.vote-bar{margin-bottom:20px}
+.vote-bar span{font-weight:bold;display:block;margin-bottom:5px}
+.vote-fill{
+  height:20px;background:linear-gradient(90deg,#c69b4e,#e3c47a);
+  width:0;border-radius:10px;transition:width 2s ease;
+}
+
+/* JOIN FORM */
+#join-form{max-width:400px;margin:40px auto;background:rgba(255,255,255,.9);
+  padding:30px;border-radius:20px;box-shadow:0 4px 10px rgba(0,0,0,.1)}
+#join-form input{
+  width:100%;padding:12px;margin:8px 0;border-radius:8px;
+  border:1px solid #ccc;font-size:1em
+}
+#join-form button{
+  margin-top:15px;width:100%;padding:12px;border:none;
+  border-radius:20px;background:#c69b4e;color:white;
+  font-weight:bold;cursor:pointer;transition:.3s
+}
+#join-form button:hover{background:#b6853b}
+#join-message{font-size:1.2em;margin-top:20px;color:#6b4e1e;display:none}
+
+/* FLOATING */
+.floating{position:absolute;width:50px;opacity:.2;animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+
+/* FOOTER */
+footer{
+  background:rgba(0,0,0,.7);color:white;text-align:center;
+  padding:20px;margin-top:60px;font-size:.9em
+}
+</style>
+</head>
+
+<body>
+<!-- INTRO -->
+<div id="intro">
+  <h1>Welcome to Kultur Cave</h1>
+  <p>Explore. Feel. Celebrate.</p>
+  <button id="start-btn">Enter</button>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <h1>Culture Cave</h1>
+  <p>Experience the winning team of the Culture Day</p>
+  <button class="info-btn" id="info-btn">About</button>
+  <button class="join-btn" id="join-btn">Join Project</button>
+
+  <div class="video-section">
+    <h2>Lowkey Kultur – Winner Team</h2>
+    <div class="video-frame">
+      <video id="winner-video" controls poster="hintergrund.jpg">
+        <source src="EKKOKÆLDEREN.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <div class="votes">
+    <h2>Votes</h2>
+    <div class="vote-bar"><span>DSH – 67,200 votes</span><div class="vote-fill" data-width="85%"></div></div>
+    <div class="vote-bar"><span>RHEA – 50,400 votes</span><div class="vote-fill" data-width="65%"></div></div>
+    <div class="vote-bar"><span>ARTES – 39,000 votes</span><div class="vote-fill" data-width="45%"></div></div>
+  </div>
+</div>
+
+<!-- ABOUT SLIDE -->
+<div class="slide" id="info-slide">
+  <h2>About Lowkey Kultur</h2>
+  <p>
+    Lowkey Kultur celebrates creativity and diversity through music, art, and stories that connect cultures worldwide. 
+    From traditional dance to modern expression — our mission is to share unity through culture.
+  </p>
+  <button id="back-btn">Back</button>
+</div>
+
+<!-- JOIN SLIDE -->
+<div class="slide" id="join-slide">
+  <h2>Do you want to join our project?</h2>
+  <p>Become part of Lowkey Kultur by sharing your school and contact.</p>
+  <form id="join-form">
+    <input type="text" id="school" placeholder="Your School" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <button type="submit">Join Now</button>
+  </form>
+  <div id="join-message">You’re now part of Lowkey Kultur 💛</div>
+  <button id="join-back">Back</button>
+</div>
+
+<!-- FLOATING ICONS -->
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Music_note.svg" class="floating" style="top:10%;left:5%;animation-delay:1s;">
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Africa_mask.svg" class="floating" style="bottom:15%;right:10%;animation-delay:2s;width:60px;">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Leaf_icon.svg" class="floating" style="top:40%;left:85%;animation-delay:3s;width:40px;">
+
+<footer>© 2025 Lowkey Kultur – All Rights Reserved</footer>
+
+<script>
+// INTRO transition
+document.getElementById("start-btn").addEventListener("click",()=>{
+  document.getElementById("intro").style.opacity="0";
+  setTimeout(()=>{
+    document.getElementById("intro").style.display="none";
+    document.getElementById("main").style.opacity="1";
+  },1000);
+});
+
+// ABOUT slide
+const infoSlide=document.getElementById("info-slide");
+document.getElementById("info-btn").addEventListener("click",()=>infoSlide.classList.add("active"));
+document.getElementById("back-btn").addEventListener("click",()=>infoSlide.classList.remove("active"));
+
+// JOIN slide
+const joinSlide=document.getElementById("join-slide");
+document.getElementById("join-btn").addEventListener("click",()=>joinSlide.classList.add("active"));
+document.getElementById("join-back").addEventListener("click",()=>joinSlide.classList.remove("active"));
+
+// JOIN form
+const form=document.getElementById("join-form");
+form.addEventListener("submit",e=>{
+  e.preventDefault();
+  form.style.display="none";
+  document.getElementById("join-message").style.display="block";
+});
+
+// Vote bar animation
+window.addEventListener("scroll",()=>{
+  document.querySelectorAll(".vote-fill").forEach(bar=>{
+    const rect=bar.getBoundingClientRect();
+    if(rect.top<window.innerHeight-50){bar.style.width=bar.getAttribute("data-width")}
+  });
+});
+</script>
+</body>
+</html>
